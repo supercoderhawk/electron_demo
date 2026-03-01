@@ -2,7 +2,7 @@ appId: com.yubin.electrondemo
 productName: electron-demo
 directories:
   buildResources: build
-  output: release/modern
+  output: release/legacy
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -14,7 +14,7 @@ files:
 asarUnpack:
   - resources/**
 extraMetadata:
-  releaseLine: modern
+  releaseLine: legacy
 win:
   executableName: electron-demo
   target:
@@ -22,7 +22,7 @@ win:
       arch:
         - ia32
         - x64
-  artifactName: ${name}-${version}-modern-${os}-${arch}.${ext}
+  artifactName: ${name}-${version}-legacy-${os}-${arch}.${ext}
 nsis:
   oneClick: false
   perMachine: false
@@ -46,7 +46,7 @@ mac:
         - arm64
         - universal
 dmg:
-  artifactName: ${name}-${version}-modern-${os}-${arch}.${ext}
+  artifactName: ${name}-${version}-legacy-${os}-${arch}.${ext}
 linux:
   target:
     - target: AppImage
@@ -57,7 +57,7 @@ linux:
         - x64
   maintainer: supercoderhawk
   category: Utility
-  artifactName: ${name}-${version}-modern-${os}-${arch}.${ext}
+  artifactName: ${name}-${version}-legacy-${os}-${arch}.${ext}
 npmRebuild: false
 publish:
   provider: github
