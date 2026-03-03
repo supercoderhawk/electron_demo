@@ -5,8 +5,19 @@ const appEntry = path.resolve(__dirname, '../out/main/index.js')
 test.setTimeout(90_000)
 
 test('launches the electron shell', async () => {
+  const args = [appEntry]
+  if (process.platform === 'linux') {
+    // Harden Electron startup in headless Linux CI.
+    args.push(
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu'
+    )
+  }
+
   const app = await electron.launch({
-    args: [appEntry],
+    args,
     env: {
       ...process.env,
       NODE_ENV: 'production',
